@@ -32,11 +32,11 @@ public class WebController {
     }
 
     @PostMapping(path="/ajouterAchat", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Client> ajouterAchat(@RequestBody Client stage-client) {
+    public List<Client> ajouterAchat(@RequestBody Client stageClient) {
         Client new_client = new Client();
-        new_client.setLastName(stage-client.getLastName());
-        new_client.setFirstName(stage-client.getFirstName());
-        stage-client.getItems().forEach(item -> {
+        new_client.setLastName(stageClient.getLastName());
+        new_client.setFirstName(stageClient.getFirstName());
+        stageClient.getItems().forEach(item -> {
             new_client.addItem(item);
         });
         clientRepository.save(new_client);
